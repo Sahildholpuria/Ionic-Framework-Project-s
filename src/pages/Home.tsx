@@ -288,7 +288,7 @@ const Home: React.FC = () => {
 
   return (
     <IonPage>
-      <IonContent fullscreen className="calc-content-wrapper">
+      <IonContent fullscreen scrollY={false} className="calc-content-wrapper">
         <div className="app-viewport">
           {/* Top Bar */}
           <div className="calc-top-bar">

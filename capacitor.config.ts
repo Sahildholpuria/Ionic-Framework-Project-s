@@ -6,7 +6,7 @@ const config: CapacitorConfig = {
   webDir: 'dist',
   plugins: {
     StatusBar: {
-      style: 'DARK',
+      style: 'LIGHT',
       backgroundColor: '#07090e',
     },
     Keyboard: {
@@ -15,14 +15,14 @@ const config: CapacitorConfig = {
       resizeOnFullScreen: true,
     },
     SplashScreen: {
-      launchShowDuration: 1800,
+      launchShowDuration: 1200,
       launchAutoHide: true,
       backgroundColor: '#07090e',
       androidSplashResourceName: 'splash',
       androidScaleType: 'CENTER_CROP',
       showSpinner: false,
-      splashFullScreen: true,
-      splashImmersive: true,
+      splashFullScreen: false,
+      splashImmersive: false,
     },
   },
   android: {

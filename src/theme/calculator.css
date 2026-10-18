@@ -1,10 +1,20 @@
 /* Apex Calculator - Flagship Modern & Minimal Stylesheet */
 
+ion-content.calc-content-wrapper {
+  --background: var(--bg-primary);
+  --color: var(--text-primary);
+  --overflow: hidden;
+  --padding-top: 0;
+  --padding-bottom: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+  overflow: hidden;
+}
+
 .app-viewport {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  height: 100dvh;
+  height: 100%;
   width: 100%;
   max-width: 480px;
   margin: 0 auto;
@@ -21,8 +31,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 16px 4px;
-  min-height: 52px;
+  padding: calc(env(safe-area-inset-top, 0px) + 8px) 16px 6px;
+  min-height: calc(56px + env(safe-area-inset-top, 0px));
   z-index: 10;
   flex-shrink: 0;
 }
@@ -184,21 +194,21 @@
 
 .expression-text {
   font-family: var(--mono-font);
-  font-size: clamp(2rem, 7vw, 3.4rem);
+  font-size: clamp(2.4rem, 8.5vw, 4rem);
   font-weight: 600;
   line-height: 1.15;
   color: var(--text-primary);
   display: inline-block;
-  letter-spacing: -1px;
+  letter-spacing: -0.5px;
   word-break: break-all;
 }
 
 .expression-text.compact {
-  font-size: clamp(1.6rem, 5.5vw, 2.4rem);
+  font-size: clamp(1.8rem, 6.2vw, 2.6rem);
 }
 
 .expression-text.micro {
-  font-size: clamp(1.3rem, 4.5vw, 1.8rem);
+  font-size: clamp(1.4rem, 4.8vw, 1.9rem);
 }
 
 .live-preview-row {
@@ -363,11 +373,10 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  height: 60px;
-  min-height: 60px;
+  min-height: calc(56px + env(safe-area-inset-bottom, 0px));
   background-color: var(--bg-surface);
   border-top: 1px solid var(--border-subtle);
-  padding: 4px 12px env(safe-area-inset-bottom, 6px);
+  padding: 6px 12px calc(env(safe-area-inset-bottom, 0px) + 8px);
   flex-shrink: 0;
   z-index: 10;
 }
@@ -437,9 +446,15 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 8px 16px 12px;
-  overflow: hidden;
-  gap: 12px;
+  padding: 6px 16px 12px;
+  overflow-y: auto;
+  gap: 10px;
+  min-height: 0;
+  scrollbar-width: none;
+}
+
+.converter-container::-webkit-scrollbar {
+  display: none;
 }
 
 .category-scroll {
@@ -563,9 +578,15 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 8px 16px 12px;
-  overflow: hidden;
+  padding: 6px 16px 12px;
+  overflow-y: auto;
   gap: 10px;
+  min-height: 0;
+  scrollbar-width: none;
+}
+
+.tip-container::-webkit-scrollbar {
+  display: none;
 }
 
 .tip-result-card {

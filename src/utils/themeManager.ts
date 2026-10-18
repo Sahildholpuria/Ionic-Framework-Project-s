@@ -33,8 +33,8 @@ export class ThemeManager {
 
     // Sync Capacitor Status Bar
     try {
-      StatusBar.setStyle({ style: isDark ? Style.Dark : Style.Light }).catch(() => {});
-      StatusBar.setBackgroundColor({ color: isDark ? '#0b0d13' : '#f8fafc' }).catch(() => {});
+      StatusBar.setStyle({ style: isDark ? Style.Light : Style.Dark }).catch(() => {});
+      StatusBar.setBackgroundColor({ color: isDark ? '#07090e' : '#f8fafc' }).catch(() => {});
     } catch {
       // Ignored if in browser or unsupported
     }
