@@ -53,7 +53,7 @@ jobs:
       - name: Prepare APK Asset
         run: |
           mkdir -p release-assets
-          cp android/app/build/outputs/apk/debug/app-debug.apk release-assets/apex-calculator-${{ github.ref_name }}.apk
+          cp android/app/build/outputs/apk/debug/app-debug.apk release-assets/calculator-${{ github.ref_name }}.apk
 
       - name: Upload APK to GitHub Release
         uses: softprops/action-gh-release@v2

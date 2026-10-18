@@ -2,7 +2,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.ionic.apexcalculator',
-  appName: 'Apex Calculator',
+  appName: 'Calculator',
   webDir: 'dist',
   plugins: {
     StatusBar: {

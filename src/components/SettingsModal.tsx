@@ -213,11 +213,11 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
               <img
                 src="/logo.png"
-                alt="Apex Logo"
+                alt="Calculator Logo"
                 style={{ width: 36, height: 36, borderRadius: 10, border: '1px solid var(--border-subtle)' }}
               />
               <div>
-                <div style={{ fontWeight: 700, fontSize: 15, color: 'var(--text-primary)' }}>Apex Calculator</div>
+                <div style={{ fontWeight: 700, fontSize: 15, color: 'var(--text-primary)' }}>Calculator</div>
                 <div style={{ fontSize: 11, color: 'var(--accent-cyan)', fontWeight: 600 }}>v1.1 • Flagship Edition</div>
               </div>
             </div>

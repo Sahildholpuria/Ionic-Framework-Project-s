@@ -1,7 +1,7 @@
-# ⚡ Apex Calculator — Modern, Minimal & Scientific for Android
+# ⚡ Calculator — Modern, Minimal & Scientific for Android
 
 <p align="center">
-  <img src="public/icon-192.png" alt="Apex Calculator Logo" width="120" style="border-radius: 28px;" />
+  <img src="public/icon-192.png" alt="Calculator Logo" width="120" style="border-radius: 28px;" />
 </p>
 
 <p align="center">
