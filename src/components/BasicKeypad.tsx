@@ -33,9 +33,9 @@ export const BasicKeypad: React.FC<BasicKeypadProps> = ({
           feedback.onKeyFeedback('delete');
           onClear();
         }}
-        title="Clear"
+        title="All Clear"
       >
-        {hasInput ? 'C' : 'AC'}
+        AC
       </button>
 
       <button

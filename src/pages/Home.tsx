@@ -122,6 +122,7 @@ const Home: React.FC = () => {
   const handleClear = () => {
     setExpression('');
     setPreviewResult(null);
+    setLastCalculated(null);
   };
 
   const handleBackspace = () => {

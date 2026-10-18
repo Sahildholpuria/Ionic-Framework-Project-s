@@ -229,7 +229,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                     borderRadius: 12,
                     border: '1px solid rgba(0, 217, 245, 0.25)',
                   }}>
-                    v1.0.4
+                    v1.0.5
                   </span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 4 }}>

@@ -308,8 +308,9 @@ export const ScientificKeypad: React.FC<ScientificKeypadProps> = ({
           feedback.onKeyFeedback('delete');
           onClear();
         }}
+        title="All Clear"
       >
-        {hasInput ? 'C' : 'AC'}
+        AC
       </button>
       <button
         className="key-btn key-number"

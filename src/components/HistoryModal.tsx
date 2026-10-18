@@ -66,25 +66,29 @@ export const HistoryModal: React.FC<HistoryModalProps> = ({
       <div className="history-sheet">
         <div className="history-header">
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <IonIcon icon={timeOutline} style={{ fontSize: 20, color: 'var(--accent-cyan)' }} />
+            <IonIcon icon={timeOutline} style={{ fontSize: 22, color: 'var(--accent-cyan)' }} />
             <span style={{ fontSize: 17, fontWeight: 700 }}>Calculation History</span>
             {history.length > 0 && (
               <span className="badge-pill">{history.length}</span>
             )}
           </div>
-          <div style={{ display: 'flex', gap: 6 }}>
-            {history.length > 0 && (
-              <button
-                className="icon-btn"
-                onClick={handleClear}
-                title="Clear History"
-                style={{ color: 'var(--accent-danger)' }}
-              >
-                <IonIcon icon={trashOutline} />
-              </button>
-            )}
-            <button className="icon-btn" onClick={onClose} title="Close">
-              <IonIcon icon={closeOutline} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <button
+              className="history-clear-btn"
+              onClick={handleClear}
+              disabled={history.length === 0}
+              title="Clear All History"
+            >
+              <IonIcon icon={trashOutline} style={{ fontSize: 16 }} />
+              <span>Clear</span>
+            </button>
+            <button
+              className="action-circle-btn"
+              onClick={onClose}
+              title="Close"
+              aria-label="Close History"
+            >
+              <IonIcon icon={closeOutline} style={{ fontSize: 22, color: 'var(--text-primary)' }} />
             </button>
           </div>
         </div>
@@ -111,8 +115,8 @@ export const HistoryModal: React.FC<HistoryModalProps> = ({
                     {HistoryManager.formatTimestamp(item.timestamp)}
                   </span>
                   <button
-                    className="icon-btn"
-                    style={{ width: 30, height: 30, fontSize: 14 }}
+                    className="action-circle-btn"
+                    style={{ width: 32, height: 32, fontSize: 16 }}
                     onClick={(e) => handleCopy(e, item.result)}
                     title="Copy result"
                   >
