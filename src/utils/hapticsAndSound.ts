@@ -6,12 +6,12 @@ export interface FeedbackSettings {
   volume: number; // 0 to 1
 }
 
-const SETTINGS_KEY = 'apex_calc_feedback_settings';
+const SETTINGS_KEY = 'calculator_feedback_settings';
 
 class FeedbackService {
   private settings: FeedbackSettings = {
     hapticsEnabled: true,
-    soundEnabled: true,
+    soundEnabled: false,
     volume: 0.35,
   };
 

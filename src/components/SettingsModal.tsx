@@ -16,6 +16,7 @@ import {
   moonOutline,
   sunnyOutline,
   cashOutline,
+  personOutline,
 } from 'ionicons/icons';
 import { ThemeManager, AppTheme } from '../utils/themeManager';
 import { feedback, FeedbackSettings } from '../utils/hapticsAndSound';
@@ -210,18 +211,42 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 
           {/* About */}
           <div style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)', borderRadius: 16, padding: 14 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10 }}>
               <img
                 src="/logo.png"
                 alt="Calculator Logo"
-                style={{ width: 36, height: 36, borderRadius: 10, border: '1px solid var(--border-subtle)' }}
+                style={{ width: 44, height: 44, borderRadius: 12, border: '1px solid var(--border-subtle)' }}
               />
-              <div>
-                <div style={{ fontWeight: 700, fontSize: 15, color: 'var(--text-primary)' }}>Calculator</div>
-                <div style={{ fontSize: 11, color: 'var(--accent-cyan)', fontWeight: 600 }}>v1.1 • Flagship Edition</div>
+              <div style={{ flex: 1 }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <span style={{ fontWeight: 700, fontSize: 16, color: 'var(--text-primary)' }}>Calculator</span>
+                  <span style={{
+                    fontSize: 11,
+                    fontWeight: 700,
+                    color: 'var(--accent-cyan)',
+                    background: 'rgba(0, 217, 245, 0.1)',
+                    padding: '2px 8px',
+                    borderRadius: 12,
+                    border: '1px solid rgba(0, 217, 245, 0.25)',
+                  }}>
+                    v1.0.4
+                  </span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 4 }}>
+                  <IonIcon icon={personOutline} style={{ color: 'var(--accent-cyan)', fontSize: 13 }} />
+                  <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--text-secondary)' }}>
+                    Developer: <span style={{ color: 'var(--text-primary)', fontWeight: 700 }}>Sahil Dholpuria</span>
+                  </span>
+                </div>
               </div>
             </div>
-            <div style={{ fontSize: 12, color: 'var(--text-secondary)', lineHeight: 1.5 }}>
+            <div style={{
+              fontSize: 12,
+              color: 'var(--text-secondary)',
+              lineHeight: 1.5,
+              paddingTop: 8,
+              borderTop: '1px solid var(--border-subtle)',
+            }}>
               Engineered with Ionic 9 & Capacitor 8. High-precision math, multi-currency support (Default: Indian Rupee ₹), unit conversions, and Android native haptics.
             </div>
           </div>
