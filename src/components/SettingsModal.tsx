@@ -210,9 +210,16 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 
           {/* About */}
           <div style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)', borderRadius: 16, padding: 14 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
-              <IonIcon icon={informationCircleOutline} style={{ color: 'var(--accent-cyan)' }} />
-              <span style={{ fontWeight: 700, fontSize: 14 }}>Apex Calculator v1.1</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
+              <img
+                src="/logo.png"
+                alt="Apex Logo"
+                style={{ width: 36, height: 36, borderRadius: 10, border: '1px solid var(--border-subtle)' }}
+              />
+              <div>
+                <div style={{ fontWeight: 700, fontSize: 15, color: 'var(--text-primary)' }}>Apex Calculator</div>
+                <div style={{ fontSize: 11, color: 'var(--accent-cyan)', fontWeight: 600 }}>v1.1 • Flagship Edition</div>
+              </div>
             </div>
             <div style={{ fontSize: 12, color: 'var(--text-secondary)', lineHeight: 1.5 }}>
               Engineered with Ionic 9 & Capacitor 8. High-precision math, multi-currency support (Default: Indian Rupee ₹), unit conversions, and Android native haptics.
