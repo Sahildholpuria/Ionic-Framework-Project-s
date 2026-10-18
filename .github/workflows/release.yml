@@ -22,10 +22,10 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Set up Node.js
+      - name: Set up Node.js 22
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
 
       - name: Install Dependencies
@@ -37,13 +37,13 @@ jobs:
       - name: Build Web Application
         run: npm run build
 
-      - name: Copy Web Assets to Android
-        run: npx @capacitor/cli copy android
-
-      - name: Configure Android SDK Path & Permissions
+      - name: Configure Android SDK & Gradle Permissions
         run: |
           echo "sdk.dir=$ANDROID_HOME" > android/local.properties
           chmod +x android/gradlew
+
+      - name: Sync Native Android
+        run: ./node_modules/.bin/cap sync android
 
       - name: Build Android Debug APK
         run: |
