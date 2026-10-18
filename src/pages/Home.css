@@ -1,0 +1,8 @@
+.calc-content-wrapper {
+  --background: var(--bg-primary);
+  --padding-top: 0;
+  --padding-bottom: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+  height: 100%;
+}

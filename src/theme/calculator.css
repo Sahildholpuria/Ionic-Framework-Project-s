@@ -1,0 +1,935 @@
+/* Apex Calculator - Flagship Modern & Minimal Stylesheet */
+
+.app-viewport {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   Header & Mode Switcher
+   ========================================================================== */
+.calc-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px 4px;
+  min-height: 52px;
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.calc-segment {
+  display: inline-flex;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.segment-btn {
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--app-font);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.segment-btn.active {
+  background: var(--bg-surface-elevated);
+  color: var(--text-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+[data-theme='light'] .segment-btn.active {
+  background: #ffffff;
+  color: var(--text-primary);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.angle-chip {
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+  color: var(--accent-cyan);
+  font-family: var(--mono-font);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: all 0.15s ease;
+}
+
+.angle-chip:active {
+  transform: scale(0.92);
+  background: var(--bg-surface-elevated);
+}
+
+.action-circle-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.15s ease;
+}
+
+.action-circle-btn:active {
+  transform: scale(0.92);
+  background: var(--bg-surface-elevated);
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   Display Area (Top Section)
+   ========================================================================== */
+.calc-display-section {
+  flex: 1;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 10px 20px 12px;
+  text-align: right;
+  overflow: hidden;
+  position: relative;
+}
+
+.display-status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.status-chips {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.status-badge {
+  font-size: 11px;
+  font-weight: 700;
+  font-family: var(--mono-font);
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: var(--bg-surface-elevated);
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.status-badge.active {
+  background: rgba(0, 217, 245, 0.15);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 217, 245, 0.35);
+}
+
+.history-breadcrumb {
+  font-family: var(--mono-font);
+  font-size: 14px;
+  color: var(--text-muted);
+  min-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  letter-spacing: -0.3px;
+}
+
+.expression-scroll-container {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  text-align: right;
+  padding: 4px 0;
+  scrollbar-width: none;
+}
+
+.expression-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.expression-text {
+  font-family: var(--mono-font);
+  font-size: clamp(2rem, 7vw, 3.4rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--text-primary);
+  display: inline-block;
+  letter-spacing: -1px;
+  word-break: break-all;
+}
+
+.expression-text.compact {
+  font-size: clamp(1.6rem, 5.5vw, 2.4rem);
+}
+
+.expression-text.micro {
+  font-size: clamp(1.3rem, 4.5vw, 1.8rem);
+}
+
+.live-preview-row {
+  min-height: 30px;
+  font-family: var(--mono-font);
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--accent-cyan);
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  letter-spacing: -0.5px;
+  opacity: 0.95;
+}
+
+.live-preview-row span.eq-symbol {
+  color: var(--text-muted);
+  font-size: 20px;
+}
+
+/* ==========================================================================
+   Keypad Container & Grids (Bottom Section)
+   ========================================================================== */
+.calc-main-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.calc-keypad-wrapper {
+  flex: 0 0 auto;
+  height: 58%;
+  padding: 6px 14px 10px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* Standard Keypad (4 columns x 5 rows) */
+.grid-basic {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 10px;
+  height: 100%;
+  width: 100%;
+}
+
+/* Scientific Keypad (5 columns x 6 rows) - Unified, no vertical overflow */
+.grid-scientific {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 8px;
+  height: 100%;
+  width: 100%;
+}
+
+/* Keypad Button Styling */
+.key-btn {
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  font-family: var(--app-font);
+  font-size: clamp(16px, 4.8vw, 24px);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.1s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.15s ease, box-shadow 0.15s ease;
+  user-select: none;
+  box-shadow: var(--shadow-key);
+  min-height: 0;
+  min-width: 0;
+}
+
+.key-btn:active {
+  transform: scale(0.92);
+  box-shadow: var(--shadow-key-active);
+}
+
+/* Key Variants */
+.key-number {
+  background-color: var(--key-num-bg);
+  color: var(--key-num-text);
+  border: 1px solid var(--border-subtle);
+}
+
+.key-number:active {
+  background-color: var(--key-num-active);
+}
+
+.key-action {
+  background-color: var(--key-action-bg);
+  color: var(--key-action-text);
+  border: 1px solid var(--border-subtle);
+}
+
+.key-action:active {
+  background-color: var(--key-action-active);
+}
+
+.key-action.clear-btn {
+  color: var(--accent-danger);
+}
+
+.key-operator {
+  background-color: var(--key-op-bg);
+  color: var(--key-op-text);
+  font-size: clamp(18px, 5.5vw, 26px);
+  border: 1px solid rgba(0, 217, 245, 0.2);
+}
+
+.key-operator:active {
+  background-color: var(--key-op-active);
+}
+
+.key-scientific {
+  background-color: var(--key-sci-bg);
+  color: var(--key-sci-text);
+  font-size: clamp(10px, 3.1vw, 15px);
+  font-weight: 600;
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  padding: 0 2px;
+}
+
+.key-scientific:active {
+  background-color: var(--key-sci-active);
+  color: var(--text-primary);
+}
+
+.key-scientific.active-toggle {
+  background-color: rgba(0, 217, 245, 0.18);
+  color: var(--accent-cyan);
+  border-color: var(--border-focus);
+}
+
+.key-equals {
+  background: var(--key-equals-bg);
+  color: var(--key-equals-text);
+  font-size: clamp(20px, 6vw, 28px);
+  font-weight: 700;
+  box-shadow: 0 4px 20px rgba(0, 217, 245, 0.3);
+}
+
+.key-equals:active {
+  background: var(--key-equals-active);
+}
+
+/* ==========================================================================
+   Material 3 Bottom Navigation Bar
+   ========================================================================== */
+.bottom-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 60px;
+  min-height: 60px;
+  background-color: var(--bg-surface);
+  border-top: 1px solid var(--border-subtle);
+  padding: 4px 12px env(safe-area-inset-bottom, 6px);
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.nav-tab-btn {
+  border: none;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+  padding: 4px 16px;
+  border-radius: 16px;
+}
+
+.nav-tab-btn ion-icon {
+  font-size: 20px;
+  transition: transform 0.2s ease;
+}
+
+.nav-tab-btn span {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.nav-tab-btn.active {
+  color: var(--accent-cyan);
+}
+
+.nav-tab-btn.active ion-icon {
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Unit Converter & Tip Splitter Container Overrides
+   ========================================================================== */
+.full-screen-tool {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 12px 16px;
+}
+
+.tool-scroll-body {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-bottom: 8px;
+}
+
+.tool-scroll-body::-webkit-scrollbar {
+  display: none;
+}
+
+/* ==========================================================================
+   Unit Converter View
+   ========================================================================== */
+.converter-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 16px 12px;
+  overflow: hidden;
+  gap: 12px;
+}
+
+.category-scroll {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 4px 0 8px;
+  flex-shrink: 0;
+  scrollbar-width: none;
+}
+
+.category-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.cat-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-family: var(--app-font);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cat-chip.active {
+  background: var(--bg-surface-elevated);
+  border-color: var(--border-focus);
+  color: var(--accent-cyan);
+}
+
+.conversion-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.conversion-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 18px;
+  padding: 12px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.card-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.unit-select-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 10px;
+}
+
+.card-value {
+  font-family: var(--mono-font);
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--text-primary);
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.swap-btn-wrap {
+  display: flex;
+  justify-content: center;
+  margin: -14px 0;
+  z-index: 5;
+}
+
+.swap-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--bg-surface-elevated);
+  border: 2px solid var(--bg-primary);
+  color: var(--accent-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-key);
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.swap-btn:active {
+  transform: rotate(180deg) scale(0.92);
+}
+
+/* ==========================================================================
+   Tip & Bill Splitter View
+   ========================================================================== */
+.tip-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 16px 12px;
+  overflow: hidden;
+  gap: 10px;
+}
+
+.tip-result-card {
+  background: linear-gradient(135deg, rgba(0, 217, 245, 0.12) 0%, rgba(2, 132, 199, 0.05) 100%);
+  border: 1px solid rgba(0, 217, 245, 0.25);
+  border-radius: 20px;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.result-main {
+  text-align: center;
+}
+
+.result-main .label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.result-main .amount {
+  font-family: var(--mono-font);
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  margin-top: 2px;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 10px;
+}
+
+.result-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.result-item .item-label {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.result-item .item-val {
+  font-family: var(--mono-font);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.tip-chips {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+
+.tip-chip {
+  padding: 8px 0;
+  text-align: center;
+  border-radius: 12px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.tip-chip.active {
+  background: rgba(0, 217, 245, 0.15);
+  border-color: var(--border-focus);
+  color: var(--accent-cyan);
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  padding: 6px 14px;
+}
+
+.stepper-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   History Modal & Settings Sheets
+   ========================================================================== */
+.history-sheet {
+  padding: 16px 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.history-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 0;
+}
+
+.history-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.history-card:active {
+  background: var(--bg-surface-elevated);
+  transform: scale(0.98);
+}
+
+.history-expr {
+  font-family: var(--mono-font);
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: right;
+  word-break: break-all;
+}
+
+.history-res {
+  font-family: var(--mono-font);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  text-align: right;
+}
+
+.history-time {
+  font-size: 11px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.empty-history {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: var(--text-muted);
+  gap: 12px;
+}
+
+/* ==========================================================================
+   Comprehensive Android Device Screen Adaptations & Responsiveness
+   ========================================================================== */
+
+/* 1. Small / Compact Android Phones (Width <= 360px or Height <= 640px) */
+@media (max-width: 360px), (max-height: 640px) {
+  .calc-top-bar {
+    padding: 6px 12px 2px;
+    min-height: 44px;
+  }
+  .segment-btn {
+    padding: 4px 10px;
+    font-size: 11px;
+  }
+  .action-circle-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 16px;
+  }
+  .angle-chip {
+    padding: 3px 8px;
+    font-size: 10px;
+  }
+  .calc-display-section {
+    padding: 6px 14px 6px;
+    min-height: 80px;
+  }
+  .expression-text {
+    font-size: clamp(1.5rem, 6.5vw, 2.4rem);
+  }
+  .live-preview-row {
+    font-size: 18px;
+    min-height: 22px;
+  }
+  .calc-keypad-wrapper {
+    padding: 4px 8px 8px;
+    height: 62%;
+  }
+  .grid-basic {
+    gap: 6px;
+  }
+  .grid-scientific {
+    gap: 5px;
+  }
+  .key-btn {
+    border-radius: 14px;
+  }
+  .bottom-nav {
+    height: 50px;
+    min-height: 50px;
+    padding: 2px 10px;
+  }
+  .nav-tab-btn ion-icon {
+    font-size: 17px;
+  }
+  .nav-tab-btn span {
+    font-size: 10px;
+  }
+}
+
+/* 2. Extra Tall Android Phones (Aspect Ratio >= 20:9, Height >= 820px) */
+@media (min-height: 820px) {
+  .calc-display-section {
+    padding-bottom: 20px;
+  }
+  .calc-keypad-wrapper {
+    height: 55%;
+    padding-bottom: 14px;
+  }
+  .grid-basic {
+    gap: 12px;
+  }
+  .grid-scientific {
+    gap: 8px;
+  }
+  .key-btn {
+    border-radius: 22px;
+  }
+}
+
+/* 3. Tablets, Foldables (Unfolded), and Large Displays (Width >= 600px and Height >= 600px) */
+@media (min-width: 600px) and (min-height: 600px) {
+  .app-viewport {
+    max-width: 540px;
+    height: 94vh;
+    height: 94dvh;
+    margin: 3vh auto;
+    border-radius: 32px;
+    border: 1px solid var(--border-subtle);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  }
+  .key-btn {
+    border-radius: 24px;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 4. Android Phone Landscape Mode (Height <= 550px, Orientation: Landscape) */
+@media (orientation: landscape) and (max-height: 550px) {
+  .app-viewport {
+    max-width: 100% !important;
+    height: 100vh;
+    height: 100dvh;
+    padding-left: env(safe-area-inset-left, 12px);
+    padding-right: env(safe-area-inset-right, 12px);
+  }
+
+  .calc-top-bar {
+    min-height: 40px;
+    padding: 4px 16px;
+  }
+
+  .calc-main-body {
+    flex-direction: row !important;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .calc-display-section {
+    width: 38% !important;
+    height: 100% !important;
+    border-right: 1px solid var(--border-subtle);
+    justify-content: center !important;
+    padding: 10px 16px;
+  }
+
+  .expression-text {
+    font-size: clamp(1.4rem, 4vw, 2.2rem);
+  }
+
+  .calc-keypad-wrapper {
+    width: 62% !important;
+    height: 100% !important;
+    padding: 4px 12px 6px !important;
+  }
+
+  .grid-basic {
+    gap: 6px;
+  }
+
+  .grid-scientific {
+    gap: 5px;
+  }
+
+  .key-btn {
+    border-radius: 12px;
+  }
+
+  .bottom-nav {
+    height: 44px;
+    min-height: 44px;
+    padding: 2px 12px;
+  }
+
+  .nav-tab-btn {
+    flex-direction: row;
+    gap: 6px;
+    padding: 2px 10px;
+  }
+
+  .nav-tab-btn ion-icon {
+    font-size: 16px;
+  }
+
+  .nav-tab-btn span {
+    font-size: 11px;
+  }
+}
+
+
